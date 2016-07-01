@@ -9,7 +9,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="fortress" />
-          <element id="dir-copy" path="/develop/source/fortress/build/resources/main" />
+          <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
         </element>
       </element>
       <element id="directory" name="META-INF">
