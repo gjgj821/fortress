@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="$PROJECT_DIR$/fortress.iml" filepath="$PROJECT_DIR$/fortress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fortress.iml" filepath="$PROJECT_DIR$/fortress.iml" />
     </modules>
   </component>
 </project>
