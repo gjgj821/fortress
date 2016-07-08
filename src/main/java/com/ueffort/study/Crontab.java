@@ -99,16 +99,15 @@ public class Crontab {
         }else if(s.contains("-")){
             // 范围补全
             String[] ss = s.split("-");
-            int[] a = new int[2];
-            a[0] = Integer.parseInt(ss[0]);
-            a[1] = Integer.parseInt(ss[1]);
-            if (a[0] > a[1]){
-                int t = a[0];
-                a[0] = a[1];
-                a[1] = t;
+            int a1 = Integer.parseInt(ss[0]);
+            int a2 = Integer.parseInt(ss[1]);
+            if (a1 > a2){
+                int t = a1;
+                a1 = a2;
+                a2 = t;
             }
-            i = new int[a[1] - a[0] + 1];
-            for (int t = a[0], index = 0; t <= a[1]; t++, index++){
+            i = new int[a2 - a1 + 1];
+            for (int t = a1, index = 0; t <= a2; t++, index++){
                 i[index] = t;
             }
         }else{
