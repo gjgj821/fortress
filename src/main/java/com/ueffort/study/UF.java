@@ -67,4 +67,22 @@ public class UF {
         }
         count--;
     }
+
+    /**
+     * quick-union:
+     *
+     */
+    public int findQuickUnion(int p){
+        // 找出分量的名称
+        while(p != id[p]) p = id[p];
+        return p;
+    }
+    public void unionQuickUnion(int p, int q){
+        // 将p和q的根节点统一
+        int pRoot = find(p);
+        int qRoot = find(q);
+        if (pRoot == qRoot) return;
+        id[pRoot] = qRoot;
+        count--;
+    }
 }
