@@ -1,4 +1,4 @@
-package com.ueffort.study;
+package com.ueffort.study.base;
 
 import stdlib.StdOut;
 import stdlib.StdRandom;

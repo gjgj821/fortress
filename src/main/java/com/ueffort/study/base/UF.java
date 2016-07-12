@@ -1,4 +1,4 @@
-package com.ueffort.study;
+package com.ueffort.study.base;
 
 import stdlib.StdIn;
 import stdlib.StdOut;
@@ -69,15 +69,16 @@ public class UF {
     }
 
     /**
-     * quick-union:
-     *
+     * quick-union: 用节点表示触点，用从一个节点到另一个节点的箭头表示链接，结构是树
+     * find最好情况只需访问一次数组，最坏的情况是2N+1次
+     * union根据find性能，只需一次赋值就可链接2个分量
      */
     public int findQuickUnion(int p){
         // 找出分量的名称
         while(p != id[p]) p = id[p];
         return p;
     }
-    public void unionQuickUnion(int p, int q){
+    public void unionQuickUnion(int p, int q) {
         // 将p和q的根节点统一
         int pRoot = find(p);
         int qRoot = find(q);
@@ -85,4 +86,44 @@ public class UF {
         id[pRoot] = qRoot;
         count--;
     }
+
+    /**
+ * 加权quick-union
+ * Created by GaoJie on 2016/7/12.
+ */
+public class WeightedQuickUnionUF {
+    private int[] id;  // 父链接数组（由触点索引）
+    private int[] sz;  //（由触点索引的）各个根节点所对应的分量大小
+    private int count;  // 连通分量的数量
+    public WeightedQuickUnionUF(int N){
+        count = N;
+        id = new int[N];
+        for(int i = 0; i < N; i++) id[i] = i;
+        sz = new int[N];
+        for(int i = 0; i < N; i++) sz[i] = 1;
+    }
+    public int count(){
+        return count;
+    }
+    public boolean counnected(int p, int q){
+        return find(p) == find(q);
+    }
+    public int find(int p){
+        // 跟随链接找到根节点
+        while(p != id[p]) p = id[p];
+        return p;
+    }
+    public void union(int p, int q){
+        int i = find(p);
+        int j = find(q);
+        if (i == j) return ;
+        // 将小数的根节点链接到大树的根节点
+        if (sz[i] < sz[j]){
+            id[i] = j; sz[j] += sz[i];
+        }else{
+            id[j] = i; sz[i] += sz[j];
+        }
+        count--;
+    }
+}
 }

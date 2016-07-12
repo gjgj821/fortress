@@ -1,5 +1,6 @@
-package com.ueffort.study;
+package com.ueffort.study.example;
 
+import com.ueffort.study.base.BinarySearch;
 import stdlib.StdIn;
 import stdlib.StdOut;
 

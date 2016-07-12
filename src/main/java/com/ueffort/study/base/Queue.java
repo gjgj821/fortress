@@ -1,4 +1,4 @@
-package com.ueffort.study;
+package com.ueffort.study.base;
 
 import stdlib.StdIn;
 import stdlib.StdOut;
