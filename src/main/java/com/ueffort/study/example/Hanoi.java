@@ -25,9 +25,33 @@ public class Hanoi {
         }
     }
 
+    /**
+     * 进阶Hanoi塔问题
+     * 增加消耗,保证最低消耗的前提下移动
+     * 输入:
+     * 给出矩阵a[i][j]，表示将一个盘子从i柱子移到j柱子要花费a[i][j]
+     * 再给出n，问将这n个盘子从1柱子移到3柱子的最少花费
+     */
+    private static int[][] cost;
+    private static int[][][][] dt;
+    public static int high(int n, int a, int b, int c){
+        return 0;
+    }
+
     public static void main(String[] args){
+        // base
         String item = StdIn.readLine();
         base(Integer.parseInt(item), 'A', 'B', 'C');
+        // high
+        for(int i = 0; i < 3; i ++){
+            item = StdIn.readLine();
+            String[] ii = item.split(" ");
+            for(int j = 0; j< 3; j++){
+                cost[i][j] = Integer.parseInt(ii[i]);
+            }
+        }
+        item = StdIn.readLine();
+        System.out.println("cost " + high(Integer.parseInt(item), 0, 1, 2));
     }
 
 }
