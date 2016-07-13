@@ -1,6 +1,7 @@
 package com.ueffort.study.example;
 
 import stdlib.StdIn;
+import stdlib.StdOut;
 
 /**
  * Tower of Hanoi(汉诺塔)与进阶
@@ -17,10 +18,10 @@ public class Hanoi {
      */
     public static void base(int n, char a, char b, char c){
         if(n == 1){
-            System.out.println("move " + n + " From " + a + " To " + c);
+            StdOut.println("move " + n + " From " + a + " To " + c);
         }else{
             base(n-1, a, c, b);
-            System.out.println("move " + n + " From " + a + " To " + c);
+            StdOut.println("move " + n + " From " + a + " To " + c);
             base(n-1, b, a, c);
         }
     }
@@ -51,7 +52,7 @@ public class Hanoi {
             }
         }
         item = StdIn.readLine();
-        System.out.println("cost " + high(Integer.parseInt(item), 0, 1, 2));
+        StdOut.println("cost " + high(Integer.parseInt(item), 0, 1, 2));
     }
 
 }
