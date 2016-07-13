@@ -32,10 +32,12 @@ public class Hanoi {
      * 输入:
      * 给出矩阵a[i][j]，表示将一个盘子从i柱子移到j柱子要花费a[i][j]
      * 再给出n，问将这n个盘子从1柱子移到3柱子的最少花费
+     * 属于动态规划, 使用记忆化搜索
      */
     private static int[][] cost;
     private static int[][][][] dt;
     public static int high(int n, int a, int b, int c){
+
         return 0;
     }
 
