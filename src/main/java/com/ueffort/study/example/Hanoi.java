@@ -30,12 +30,12 @@ public class Hanoi {
      * 进阶Hanoi塔问题
      * 增加消耗,保证最低消耗的前提下移动
      * 输入:
-     * 给出矩阵a[i][j]，表示将一个盘子从i柱子移到j柱子要花费a[i][j]
-     * 再给出n，问将这n个盘子从1柱子移到3柱子的最少花费
-     * 属于动态规划, 使用记忆化搜索
+     * 给出矩阵a[i][j]，表示将一个盘子从i柱子移到j柱子要花费a[i][j]: (1 ≤ tij ≤ 10000; i ≠ j).
+     * 再给出n，问将这n个盘子从1柱子移到3柱子的最少花费: (1 ≤ n ≤ 40)
+     * 属于动态规划, 使用记忆化搜索, 根据限制条件初始化
      */
-    private static int[][] cost;
-    private static int[][][][] dt;
+    private static int[][] cost = new int[4][4];
+    private static int[][][][] dt = new int[41][4][4][4];
     public static int high(int n, int a, int b, int c){
 
         return 0;
@@ -46,11 +46,14 @@ public class Hanoi {
         String item = StdIn.readLine();
         base(Integer.parseInt(item), 'A', 'B', 'C');
         // high
-        for(int i = 0; i < 3; i ++){
+        for(int i = 1; i <= 3; i ++){
             item = StdIn.readLine();
             String[] ii = item.split(" ");
-            for(int j = 0; j< 3; j++){
-                cost[i][j] = Integer.parseInt(ii[i]);
+            for(int j = 1; j <= 3; j++){
+                if (i == j)
+                    cost[i][j] = 0;
+                else
+                    cost[i][j] = Integer.parseInt(ii[i]);
             }
         }
         item = StdIn.readLine();
