@@ -3,6 +3,8 @@ package com.ueffort.study.example;
 import stdlib.StdIn;
 import stdlib.StdOut;
 
+import java.util.Arrays;
+
 /**
  * Tower of Hanoi(汉诺塔)与进阶
  * Created by tutu on 16-7-13.
@@ -36,9 +38,14 @@ public class Hanoi {
      */
     private static int[][] cost = new int[4][4];
     private static int[][][][] dt = new int[41][4][4][4];
-    public static int high(int n, int a, int b, int c){
 
-        return 0;
+    public static int high(int n, int a, int b, int c){
+        if(n == 1) return Math.min(cost[a][c], cost[a][b] + cost[b][c]);
+        if(dt[n][a][b][c] != -1) return dt[n][a][b][c];
+        int tmp1 = high(n-1, a, c, b) + cost[a][b]+high(n-1, b, a, c);
+        int tmp2 = high(n-1, a, b, c) + cost[a][b]+high(n-1, c, b, a) + cost[b][c] + high(n-1, a, b, c);
+        dt[n][a][b][c] = Math.min(tmp1, tmp2);
+        return dt[n][a][b][c];
     }
 
     public static void main(String[] args){
@@ -54,6 +61,13 @@ public class Hanoi {
                     cost[i][j] = 0;
                 else
                     cost[i][j] = Integer.parseInt(ii[i]);
+            }
+        }
+        for(int i = 1; i <= 40; i++){
+            for(int j = 1; j <= 3; j++){
+                for(int k = 1; k <= 3; k++){
+                    Arrays.fill(dt[i][j][k], -1);
+                }
             }
         }
         item = StdIn.readLine();
