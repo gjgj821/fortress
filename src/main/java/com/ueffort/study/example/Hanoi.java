@@ -60,7 +60,7 @@ public class Hanoi {
                 if (i == j)
                     cost[i][j] = 0;
                 else
-                    cost[i][j] = Integer.parseInt(ii[i]);
+                    cost[i][j] = Integer.parseInt(ii[j - 1]);
             }
         }
         for(int i = 1; i <= 40; i++){
