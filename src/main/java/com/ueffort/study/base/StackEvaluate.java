@@ -13,7 +13,7 @@ import java.util.Stack;
  * 4. 在遇到右括号时，弹出一个运算符，弹出所需数量的操作数，并将运算符和操作数的运算结果压入操作数栈；
  * Created by GaoJie on 2016/7/1.
  */
-public class Evaluate {
+public class StackEvaluate {
     public static void main(String[] args){
         Stack<String> ops = new Stack<String>();
         Stack<Double> vals = new Stack<Double>();
