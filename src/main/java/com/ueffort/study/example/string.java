@@ -1,5 +1,9 @@
 package com.ueffort.study.example;
 
+import com.ueffort.study.base.Stack;
+
+import java.util.Arrays;
+
 /**
  * 字符串的相关算法
  * Created by tutu on 16-7-13.
@@ -56,7 +60,49 @@ public class string {
      * @return
      */
     public static boolean match(String s1, String s2){
-        // todo
+        if (s1.length() != s2.length()) return false;
+        char[] c1 = s1.toCharArray();
+        char[] c2 = s2.toCharArray();
+        int[] count = new int[256];  // 假设字符是ascii
+        Arrays.fill(count, 0);
+        for(int i = 0; i < s1.length(); i++){
+            count[c1[i]]++;
+        }
+        for(int i = 0; i < s2.length(); i++){
+            count[c2[i]]--;
+        }
+        for(int i = 0; i < count.length; i++){
+            if(count[i] > 0) return false;
+        }
+        return true;
+    }
+
+    /**
+     * 给定字符串，输出括号是否匹配
+     * @param s
+     * @return
+     */
+    public static boolean bracketMatch(String s){
+        Stack<Character> stack = new Stack<>();
+        char[] c = s.toCharArray();
+        for(char aC: c){
+            switch(aC){
+                case '(':
+                    stack.push(')');
+                    break;
+                case '[':
+                    stack.push(']');
+                    break;
+                case '{':
+                    stack.push('}');
+                    break;
+                case ')':
+                case ']':
+                case '}':
+                    char c1 = stack.pop();
+                    if(c1 != aC) return false;
+            }
+        }
         return true;
     }
 }
