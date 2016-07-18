@@ -27,35 +27,48 @@ public class Poland {
          直到栈为空或者遇到一个运算符的优先级小于等于当前遍历的运算符的优先级，此时将该运算符加入到栈S2中；
      （5）直到遍历完整个中序表达式之后，栈S2中仍然存在运算符，那么将这些运算符依次出栈加入到栈S1中，直到栈为空。
      按照上面的五条操作反复进行完成，那么栈S1中存放的就是逆波兰表达式。
-     * @param s
+     * @param q
      * @return
      */
     public static Stack change(Queue<String> q){
         Stack a = new Stack();
         Stack b = new Stack();
         String s;
-        char c;
+        char c1, c2;
+        int l, r;
         while(!q.isEmpty()){
             s = q.dequeue();
             if (Integer.getInteger(s) != null){
                 a.push(Integer.parseInt(s));
             }else{
-                c = s.charAt(0);
-                switch(c){
+                c1 = s.charAt(0);
+                switch(c1){
                     case '(':
-                        b.push(c);
+                        b.push(c1);
                         break;
                     case ')':
                         while(!b.isEmpty()){
-                            c = (char)b.pop();
-                            if(c == 'c') break;
-                            a.push(c);
+                            c1 = (char)b.pop();
+                            if(c1 == 'c') break;
+                            a.push(c1);
                         }
                         break;
                     default:
-                        if(b.isEmpty()) b.push(c);
-                        else{
-
+                        l = priority(c1);
+                        while(true){
+                            if(b.isEmpty()){
+                                b.push(c1);
+                                break;
+                            }
+                            c2 = (char)b.pop();
+                            r = priority(c2);
+                            if(l >= r){
+                                b.push(c2);
+                                b.push(c1);
+                                break;
+                            }else{
+                                a.push(c2);
+                            }
                         }
                 }
             }
