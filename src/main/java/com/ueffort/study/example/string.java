@@ -46,4 +46,17 @@ public class string {
         }
         return Math.max(maxMatch, Math.max(preMatch, match)) * 2;
     }
+
+    /**
+     * 假设两个字符串中所含有的字符和个数都相同我们就叫这两个字符串匹配，
+     * 比如：abcda和adabc,由于出现的字符个数都是相同，只是顺序不同，
+     * 所以这两个字符串是匹配的。要求高效。
+     * @param s1
+     * @param s2
+     * @return
+     */
+    public static boolean match(String s1, String s2){
+        // todo
+        return true;
+    }
 }
