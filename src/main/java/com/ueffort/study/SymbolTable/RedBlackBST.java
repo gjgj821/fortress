@@ -59,6 +59,7 @@ public class RedBlackBST extends ST {
     private Node put(Node h, Comparable comparable, Object o){
         if (h == null)
             return new Node(comparable, o, 1, RED);
+
         int cmp = comparable.compareTo(h.key);
         if (cmp < 0) h.left = put(h.left, comparable, o);
         else if(cmp > 0) h.right = put(h.right, comparable, o);
