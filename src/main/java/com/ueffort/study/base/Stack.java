@@ -39,6 +39,9 @@ public class Stack<Item> implements Iterable<Item> {
         N--;
         return item;
     }
+    public Item top(){
+        return first != null ? first.item : null;
+    }
 
     @Override
     public Iterator<Item> iterator(){
