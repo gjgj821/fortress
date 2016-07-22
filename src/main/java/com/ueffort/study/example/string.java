@@ -105,4 +105,15 @@ public class string {
         }
         return true;
     }
+
+    /**
+     * 比如shift("abcde",2)， 输出“deabc”.
+     * 要求原地移位，空间复杂度为O(1)，时间复杂度不做要求
+     * @param c
+     * @param p
+     */
+    public static void rightLoop(char[] c, int p){
+        p = p % c.length; // 重置真实位移距离
+
+    }
 }
