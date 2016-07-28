@@ -1,14 +1,12 @@
 package com.ueffort.study.example;
 
+import com.ueffort.study.base.MinPQ;
 import com.ueffort.study.base.Queue;
-import com.ueffort.study.base.Stack;
 import stdlib.StdIn;
 import stdlib.StdOut;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * 霍夫曼编码:用于数据无损压缩
@@ -61,16 +59,11 @@ public class Huffman {
         return null;
     }
 
-    public static class Tree<Item> implements Comparator<Tree>{
+    public static class Tree<Item> implements Comparable<Tree> {
         Tree left;
         Tree right;
         Item key;
         int freq;
-
-        @Override
-        public int compare(Tree t1, Tree t2) {
-            return t1.freq > t2.freq ? 1 : t1.freq == t2.freq ? 0 : -1;
-        }
 
         /**
          * 是否是支点
@@ -79,30 +72,34 @@ public class Huffman {
         public boolean isLeaf(){
             return this.left == null && this.right == null;
         }
+
+        @Override
+        public int compareTo(Tree o) {
+            return this.freq > o.freq ? 1 : this.freq == o.freq ? 0 : -1;
+        }
     }
 
     public static Tree build(int[] freq){
         // 用优先队列处理更合适
-        Stack<Tree> stack = new Stack<>();
+        MinPQ pq = new MinPQ<>(255);
         Tree left, right;
         for(int i = 0; i < freq.length; i++){
             if (freq[i] == 0) continue;
             Tree t = new Tree();
             t.key = i;
             t.freq = freq[i];
-            stack.push(t);
+            pq.insert(t);
         }
-        while(stack.size() > 1){
-            // todo sort: 最小的2个合并
-            left = stack.pop();
-            right = stack.pop();
+        while(pq.size() > 1){
+            left = (Tree)pq.delMin();
+            right = (Tree)pq.delMin();
             Tree t = new Tree();
             t.freq = left.freq + right.freq;
             t.left = left;
             t.right = right;
-            stack.push(t);
+            pq.insert(t);
         }
-        return stack.top();
+        return (Tree)pq.top();
     }
 
     /**

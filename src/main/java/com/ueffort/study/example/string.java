@@ -1,6 +1,7 @@
 package com.ueffort.study.example;
 
 import com.ueffort.study.base.Stack;
+import stdlib.StdOut;
 
 import java.util.Arrays;
 
@@ -114,6 +115,37 @@ public class string {
      */
     public static void rightLoop(char[] c, int p){
         p = p % c.length; // 重置真实位移距离
+        char tmp;
+        for(int i = 0; i < p; i ++){
+            for(int j = 0; j < c.length; j++){
+                tmp = c[j];
+                c[j] = c[c.length - j - 1];
+                c[c.length - j - 1] = tmp;
+            }
+            StdOut.println(c);
+        }
+    }
 
+    /**
+     * KMP: Knuth-Morris-Pratt 字符串查找算法
+     * 子串pattern依次与目标串target中的字符比较，
+     *      如果相等，继续比较下一个字符；
+     *      如果不等，pattern右移一位，重新开始比较，直至匹配正确或超出target。
+     * 演变:
+     * KMP算法，是由KMP朴素算法演变而来的，主要分为两步：
+     *      第一步，当字符串比较出现不等时，确定下一趟比较前，应该将子串pattern右移多少个字符（预处理）
+     *      第二步，子串pattern右移后，应该从哪个字符开始和目标串target中刚才比较时不等的那个字符继续开始比较（查找）
+     */
+    public int kmp(String target, String pattern){
+        int index = -1;
+        kmpPre(target, pattern);
+        index = kmpFind(target, pattern);
+        return index;
+    }
+    private void kmpPre(String target, String pattern){
+
+    }
+    private int kmpFind(String target, String pattern){
+        return 0;
     }
 }
