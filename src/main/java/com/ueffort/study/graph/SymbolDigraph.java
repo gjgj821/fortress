@@ -10,12 +10,12 @@ import stdlib.StdOut;
  * 符号图
  * Created by GaoJie on 2016/7/27.
  */
-public class SymbolGraph {
+public class SymbolDigraph {
     private ST<String, Integer> st;
     private String[] keys;
-    private Graph G;
+    private Digraph G;
 
-    public SymbolGraph(String filename, String delim){
+    public SymbolDigraph(String filename, String delim){
         st = new BST();
         In in = new In(filename);
         while (in.hasNextLine()){
@@ -30,7 +30,7 @@ public class SymbolGraph {
         for(String name : st.keys())
             keys[st.get(name)] = name;
 
-        G = new Graph(st.size());
+        G = new Digraph(st.size());
         in = new In(filename);
         while (in.hasNextLine()){
             String[] a = in.readLine().split(delim);  // 将每一行的第一个顶点和改行的其他顶点相连
@@ -52,15 +52,15 @@ public class SymbolGraph {
         return keys[v];
     }
 
-    public Graph G(){
+    public Digraph G(){
         return G;
     }
 
     public static void main(String[] args){
         String filename = args[0];
         String delim = args[1];
-        SymbolGraph sg = new SymbolGraph(filename, delim);
-        Graph G = sg.G();
+        SymbolDigraph sg = new SymbolDigraph(filename, delim);
+        Digraph G = sg.G();
         while (StdIn.hasNextLine()){
             String source = StdIn.readLine();
             for (int w : G.adj(sg.index(source)))
