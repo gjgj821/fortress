@@ -1,6 +1,5 @@
 package com.ueffort.study.example;
 
-import com.ueffort.study.base.Stack;
 import stdlib.StdIn;
 import stdlib.StdOut;
 
@@ -50,9 +49,9 @@ public class PoC {
     public static void combination(char[] s){
         int t = 1 << s.length;
         for(int i = 0; i < t; i++){
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder(s.length);
             for(int j = 0; j < s.length; j++){
-                if((i & (1 << j)) > 0) sb.append(s[j]);
+                if((i & 1 << j) > 0) sb.append(s[j]);
             }
             StdOut.println(sb.toString());
         }
