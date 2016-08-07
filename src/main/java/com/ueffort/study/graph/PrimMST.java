@@ -1,5 +1,7 @@
 package com.ueffort.study.graph;
 
+import com.ueffort.study.base.Bag;
+
 /**
  * 最小生成树Prim算法：
  *  将不在树中的v的权重记录在索引优先队列中
@@ -44,7 +46,10 @@ public class PrimMST {
     }
 
     public Iterable<Edge> edges(){
-        return null;
+        Bag<Edge> mst = new Bag<>();
+        for (int v = 1; v < edgeTo.length; v++)
+            mst.add(edgeTo[v]);
+        return mst;
     }
 
     public double weight(){

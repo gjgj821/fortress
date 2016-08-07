@@ -17,6 +17,10 @@ public class Topological {
         }
     }
 
+    public Topological(EdgeWeightedDigraph G){
+
+    }
+
     public Iterable<Integer> order(){
         return order;
     }
