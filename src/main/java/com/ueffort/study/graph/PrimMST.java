@@ -1,6 +1,7 @@
 package com.ueffort.study.graph;
 
 import com.ueffort.study.base.Bag;
+import com.ueffort.study.base.IndexMinPQ;
 
 /**
  * 最小生成树Prim算法：
