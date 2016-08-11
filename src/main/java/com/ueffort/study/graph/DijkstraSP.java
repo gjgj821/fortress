@@ -8,8 +8,8 @@ import com.ueffort.study.base.Stack;
  * Created by GaoJie on 2016/8/6.
  */
 public class DijkstraSP {
-    private DirectedEdge[] edgeTo;
-    private double[] distTo;
+    private DirectedEdge[] edgeTo;  // 到该点的边
+    private double[] distTo;  // 到该点的权重
     private IndexMinPQ<Double> pq;
 
     public DijkstraSP(EdgeWeightedDigraph G, int s){

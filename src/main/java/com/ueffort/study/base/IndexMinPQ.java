@@ -41,14 +41,14 @@ public class IndexMinPQ<Key extends Comparable<Key>>  {
         iq[index].key = k;
         swim(iq[index].priority);
     }
-    public Key delMin(){
+    public int delMin(){
         Node min = pq[0];  // 从根节点得到最小元素
         exch(1, N--);  // 将其和最后一个节点交换
 
         pq[N + 1] = null;  // 防止对象游离
         iq[min.index] = null;
         sink(1);  // 恢复堆的有序性
-        return min.key;
+        return min.index;
     }
     public boolean contains(int index){
         return iq[index] != null;

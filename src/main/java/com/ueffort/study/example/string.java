@@ -333,4 +333,14 @@ public class string {
         }
         return max - 1;
     }
+
+    /**
+     * 给定一个字符串，输出所有回文分割的可能性
+     * @param s
+     * @return
+     */
+    public int huiwenCount(String s){
+        int c = 0;
+
+    }
 }
