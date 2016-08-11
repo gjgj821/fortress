@@ -43,4 +43,21 @@ public class TST<Value> {
         else x.val = val;
         return x;
     }
+
+    public String longestPrefixOf(String s){
+        int length = search(root, s, 0, 0);
+        return s.substring(0, length);
+    }
+
+    private int search(Node x, String s, int d, int length){
+        if(x == null) return length;
+        if(x.val != null) length = d;
+        if(d == s.length()) return length;
+        char c = s.charAt(d);
+        Node n = null;
+        if(c < x.c) n = x.left;
+        else if(c > x.c) n = x.right;
+        else if(d < s.length() - 1) n = x.mid;
+        return search(n, s, d + 1, length);
+    }
 }

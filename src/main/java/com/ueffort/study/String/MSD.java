@@ -1,5 +1,6 @@
 package com.ueffort.study.String;
 
+import com.ueffort.study.sort.Example;
 import com.ueffort.study.sort.Insertion;
 
 /**
@@ -26,7 +27,7 @@ public class MSD {
     protected static void sort(String[] a, int lo, int hi, int d){
         if(hi <= lo + M){
             //用插入排序加快排序
-            Insertion.sort(a, lo, hi, d);
+            InsertionSort(a, lo, hi, d);
             return ;
         }
 
@@ -45,5 +46,16 @@ public class MSD {
 
         for(int r = 0; r < R; r++)
             sort(a, lo + count[r], lo + count[r + 1] - 1, d + 1);
+    }
+
+    public static void InsertionSort(String[] a, int lo, int hi, int d){
+        for(int i = lo; i <= hi; i++)
+            for(int j = i; j > lo && less(a[j], a[j - 1], d); j--)
+                Example.exch(a, j, j - 1);
+
+    }
+
+    private static boolean less(String v, String w, int d){
+        return v.substring(d).compareTo(w.substring(d)) < 0;
     }
 }

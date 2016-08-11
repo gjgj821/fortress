@@ -8,7 +8,6 @@ import com.ueffort.study.sort.SortCompare;
  * Created by GaoJie on 2016/8/9.
  */
 public class Quick3string extends MSD {
-    @Override
     protected static void sort(String[] a, int lo, int hi, int d){
         if(hi <= lo) return;
         int lt = lo, gt = hi;
