@@ -10,5 +10,15 @@ package com.ueffort.study.example;
  * Created by GaoJie on 2016/8/9.
  */
 public class Queen {
+    /**
+     * 给定N，返回基础的摆放方式
+     *      默认将0，0点作为第一个棋子点
+     *      可以通过将结果进行上下左右平移得到N*N种摆放方法
+     * @param N
+     * @return
+     */
+    public static int[][] compute(int N){
+        int[][] q = new int[N][N];
 
+    }
 }
