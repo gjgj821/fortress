@@ -109,28 +109,18 @@ public class Huffman {
      */
     public static HashMap map(Tree t){
         HashMap m = new HashMap();
-        Queue q = new Queue();
-        code(t, q, m);
+        code(t, "", m);
         return m;
     }
 
-    private static void code(Tree t, Queue q, HashMap map){
+    private static void code(Tree t, String c, HashMap map){
         if(t.isLeaf()){
-            String curcode = "";
-            for (Object aQ : q) {
-                int i = (int) aQ;
-                curcode += "" + i;
-            }
-            map.put(t.key, curcode);
+            map.put(t.key, c);
             return;
         }
-        Queue lcode = q;
-        Queue rcode = q;
-        lcode.enqueue(0);
-        rcode.enqueue(1);
 
-        code(t.left, lcode, map);
-        code(t.right, rcode, map);
+        code(t.left, c + 0, map);
+        code(t.right, c + 1, map);
     }
 
     public static void main(String[] args){

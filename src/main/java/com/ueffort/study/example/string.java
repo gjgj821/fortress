@@ -341,6 +341,6 @@ public class string {
      */
     public int huiwenCount(String s){
         int c = 0;
-
+        return c;
     }
 }

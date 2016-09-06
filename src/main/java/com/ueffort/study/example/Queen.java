@@ -19,6 +19,6 @@ public class Queen {
      */
     public static int[][] compute(int N){
         int[][] q = new int[N][N];
-
+        return q;
     }
 }
