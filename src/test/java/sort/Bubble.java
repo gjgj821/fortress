@@ -7,16 +7,13 @@ public class Bubble {
     public static int[] sort(int[] a){
         int last = a.length;
         for(int i = 0; i < a.length; i++){
-            int j = i;
-            for(; j < a.length && j < last; j++){
-                if(a[i] > a[j]){
-                    last = j;
-                    int t = a[i];
-                    a[i] = a[j];
-                    a[j] = t;
+            for(int j = i; j < a.length; j++){
+                if(a[j] < a[j - 1]){
+                    int t = a[j];
+                    a[j] = a[j - 1];
+                    a[j - 1] = t;
                 }
             }
-            last = j;
         }
         return a;
     }
