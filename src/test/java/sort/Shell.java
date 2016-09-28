@@ -13,7 +13,7 @@ public class Shell {
                     if(a[j] > a[i]){
                         int t = a[j];
                         a[j] = a[i];
-                        a[i] = a[j];
+                        a[i] = t;
                     }
                 }
             }
